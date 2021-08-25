@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +18,6 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.channels.ScatteringByteChannel;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,19 +86,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String todoItem = edText.getText().toString();
 
-                //Add the item to the model
-                items.add(todoItem);
+                if (!todoItem.equals("")) {
+                    //Add the item to the model
+                    items.add(todoItem);
 
-                //Notify adapter that an item was inserted
-                itemsAdapter.notifyItemInserted(items.size()-1);
+                    //Notify adapter that an item was inserted
+                    itemsAdapter.notifyItemInserted(items.size() - 1);
 
-                //Clear the text input field
-                edText.setText("");
+                    //Clear the text input field
+                    edText.setText("");
 
-                //Give user feedback for adding
-                Toast.makeText(getApplicationContext(), "Item was added.", Toast.LENGTH_SHORT).show();
+                    //Give user feedback for adding
+                    Toast.makeText(getApplicationContext(), "Item was added.", Toast.LENGTH_SHORT).show();
 
-                saveItems();
+                    saveItems();
+                }
+                else {
+                    //Give user feedback for empty input
+                    Toast.makeText(getApplicationContext(), "Provide valid item.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
