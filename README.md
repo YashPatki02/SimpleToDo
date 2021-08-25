@@ -20,7 +20,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [x] Changed colors of the recycler view, buttons, and action bar.
+* [x] Provided an additional Toast when user tries to add an item field that is empty, no addition is made for this case.  
 
 ## Video Walkthrough
 
